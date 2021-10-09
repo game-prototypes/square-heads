@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities/enemy/enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/evil_icon.png" type="Texture" id=2]
+[ext_resource path="res://components/life_bar/life_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/behaviors/movement_behavior.gd" type="Script" id=4]
+[ext_resource path="res://entities/enemy/enemy_weapon.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 33.3543
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 50.697
+
+[node name="Enemy" type="KinematicBody2D" groups=[
+"enemy",
+]]
+scale = Vector2( 0.75, 0.75 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+attack_range = 50.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LifeBar" parent="." instance=ExtResource( 3 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = -55.0
+margin_bottom = -41.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MovementBehaviour" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="EnemyWeapon" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="AttackArea" type="Area2D" parent="."]
+input_pickable = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource( 3 )

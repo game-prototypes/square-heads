@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/minigun.wav-f43c84bce889dff1124cfe2c8d56926e.sample"
+
+[deps]
+
+source_file="res://assets/audio/gun_sound/minigun.wav"
+dest_files=[ "res://.import/minigun.wav-f43c84bce889dff1124cfe2c8d56926e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

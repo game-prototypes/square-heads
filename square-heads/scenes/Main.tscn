@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/level/level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/main.gd" type="Script" id=5]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 246.643, 238.976 )
+speed = 200.0
+
+[node name="Level" parent="." instance=ExtResource( 3 )]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 540.407, 316.122 )
+current = true
+
+[connection signal="dead" from="Player" to="." method="_on_player_dead"]

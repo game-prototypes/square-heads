@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entities/player/gun/bullet_trail/bullet_trail.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.0222222, 0.0909091 ), 0.0, 0.0, 0, 0, Vector2( 0.994444, 0.163636 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0738255, 1 )
+colors = PoolColorArray( 0.980469, 0.0306396, 0.0306396, 1, 0.949219, 0.729527, 0.0704498, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "bullet_trail"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 0.267943, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.14902 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="BulletTrail" type="Line2D"]
+modulate = Color( 1, 1, 1, 0.733333 )
+show_behind_parent = true
+z_index = 1
+points = PoolVector2Array( 0, 0, 200, 0 )
+width_curve = SubResource( 1 )
+default_color = Color( 0.603922, 0.305882, 0.164706, 1 )
+gradient = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Line to represent a bullet trail"
+}
+
+[node name="TrailAnimation" type="AnimationPlayer" parent="."]
+autoplay = "bullet_trail"
+anims/bullet_trail = SubResource( 3 )
+__meta__ = {
+"_editor_description_": "This animation will fade in and out the line"
+}
+
+[connection signal="animation_finished" from="TrailAnimation" to="." method="_on_animation_finished"]

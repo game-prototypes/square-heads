@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://autoload/utils/utils.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/point.png" type="Texture" id=2]
+
+[node name="Utils" type="Node2D"]
+script = ExtResource( 1 )
+point_texture = ExtResource( 2 )
+draw_color = Color( 0.145098, 0.482353, 0.839216, 1 )

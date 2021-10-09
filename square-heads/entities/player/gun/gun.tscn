@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entities/player/gun/gun.gd" type="Script" id=1]
+[ext_resource path="res://entities/player/gun/bullet_trail/bullet_trail.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/audio/gun_sound/pistol.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sprites/black_tile.png" type="Texture" id=4]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource( 1 )
+bullet_trail = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast2D" parent="."]
+cast_to = Vector2( 50, 0 )
+collide_with_areas = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GunAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.354298, 0.098804 )
+texture = ExtResource( 4 )
